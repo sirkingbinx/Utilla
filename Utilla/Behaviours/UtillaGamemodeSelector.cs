@@ -176,7 +176,7 @@ namespace Utilla.Behaviours
             Logging.Message($"SetDefaultMode : {defaultMode}");
 
             string currentMode = GorillaComputer.instance.currentGameMode.Value;
-            bool isModded = currentMode.Contains(Constants.ModdedPrefix);
+            bool isModded = currentMode.Contains("MODDED_");
 
             if (isModded)
             {

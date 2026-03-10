@@ -62,7 +62,7 @@ namespace Utilla.Behaviours
 
                 GameModeType modeType = gameModeTypes[i];
                 if (!DefaultGameModesPerMode.TryAdd(modeType, new Gamemode(modeType))) continue;
-                ModdedGamemodesPerMode.Add(modeType, new Gamemode(Constants.ModdedPrefix, $"Modded {GameModeUtils.GetGameModeName(modeType)}", modeType));
+                ModdedGamemodesPerMode.Add(modeType, new Gamemode("MODDED_", $"Modded {GameModeUtils.GetGameModeName(modeType)}", modeType));
             }
 
             Logging.Info($"Modded Game Modes: {string.Join(", ", ModdedGamemodesPerMode.Select(item => item.Value).Select(mode => mode.DisplayName).Select(displayName => string.Format("\"{0}\"", displayName)))}");

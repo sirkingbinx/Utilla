@@ -7,10 +7,10 @@ using Utilla.Behaviours;
 
 namespace Utilla
 {
-    [BepInPlugin(Constants.GUID, Constants.Name, Constants.Version)]
+    [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     internal class Plugin : BaseUnityPlugin
     {
-        public static new ManualLogSource Logger;
+        public new static ManualLogSource Logger;
 
         public Plugin()
         {
@@ -18,13 +18,13 @@ namespace Utilla
 
             DontDestroyOnLoad(this);
 
-            Harmony.CreateAndPatchAll(typeof(Plugin).Assembly, Constants.GUID);
+            Harmony.CreateAndPatchAll(typeof(Plugin).Assembly, PluginInfo.GUID);
             Events.GameInitialized += OnGameInitialized;
         }
 
         public void OnGameInitialized(object sender, EventArgs args)
         {
-            DontDestroyOnLoad(new GameObject($"{Constants.Name} {Constants.Version}", typeof(UtillaNetworkController), typeof(GamemodeManager), typeof(ConductBoardManager)));
+            DontDestroyOnLoad(new GameObject($"{PluginInfo.Name} {PluginInfo.Version}", typeof(UtillaNetworkController), typeof(GamemodeManager), typeof(ConductBoardManager)));
         }
     }
 }
