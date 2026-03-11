@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Utilla.Models;
 
@@ -9,11 +10,10 @@ namespace Utilla
     {
         public const string Name = "Utilla";
         public const string GUID = "org.legoandmars.gorillatag.utilla"; // this used to be com.*, my bad
-        public const string Version = "1.6.28";
+        public const string Version = "1.6.29";
 
-        public const string UtillaRepoURL = "https://raw.githubusercontent.com/sirkingbinx/Utilla/refs/heads/master/Version.txt";
-
-
+        public const string VersionURL = "https://raw.githubusercontent.com/sirkingbinx/Utilla/refs/heads/master/Version.txt";
+        public const string InfoURL = "https://raw.githubusercontent.com/developer9998/Utilla-Info/main";
 
         public BaseUnityPlugin Plugin { get; set; }
         public Gamemode[] Gamemodes { get; set; }
