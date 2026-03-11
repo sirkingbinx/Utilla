@@ -8,10 +8,10 @@ namespace Utilla
     public class PluginInfo
     {
         public const string Name = "Utilla";
-        public const string GUID = "com.legoandmars.gorillatag.utilla";
+        public const string GUID = "org.legoandmars.gorillatag.utilla"; // this used to be com.*, my bad
         public const string Version = "1.6.28";
 
-        public const string UtillaRepoURL = "https://github.com/sirkingbinx/Utilla";
+        public const string UtillaRepoURL = "https://raw.githubusercontent.com/sirkingbinx/Utilla/refs/heads/master/Version.txt";
 
 
 
