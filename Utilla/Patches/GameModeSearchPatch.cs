@@ -6,7 +6,7 @@ using Utilla.Utils;
 
 namespace Utilla.Patches;
 
-[HarmonyPatch(typeof(GameMode), nameof(GameMode.FindGameModeInString))]
+[HarmonyPatch(typeof(GameMode), nameof(GameMode.FindGameModeInPropertyString))]
 internal class GameModeSearchPatch
 {
     public static bool Prefix(string gmString, ref string __result)

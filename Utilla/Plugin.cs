@@ -24,7 +24,7 @@ namespace Utilla
 
         public void OnGameInitialized(object sender, EventArgs args)
         {
-            DontDestroyOnLoad(new GameObject($"{PluginInfo.Name} {PluginInfo.Version}", typeof(UtillaNetworkController), typeof(GamemodeManager), typeof(ConductBoardManager)));
+            DontDestroyOnLoad(new GameObject($"{PluginInfo.Name} {PluginInfo.Version}", typeof(UtillaNetworkController), typeof(GamemodeManager), typeof(VersionCheckManager)));
         }
     }
 }
