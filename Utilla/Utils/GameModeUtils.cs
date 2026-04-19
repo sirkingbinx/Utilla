@@ -13,9 +13,9 @@ namespace Utilla.Utils
 
         public static Gamemode FindGamemodeInString(string gmString)
         {
-            if (gmString.Contains('|'))
+            if (gmString.Contains(';'))
             {
-                string[] split = gmString.Split('|');
+                string[] split = gmString.Split(';');
                 bool useSeperator = split.Length > 2;
                 return useSeperator ? GetGamemode(gamemode => split[^1] == gamemode.ID) : null;
             }

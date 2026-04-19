@@ -161,23 +161,30 @@ namespace Utilla.Behaviours
 
         HashSet<Gamemode> GetGamemodes(Type type)
         {
-            IEnumerable<ModdedGamemodeAttribute> attributes = type.GetCustomAttributes<ModdedGamemodeAttribute>();
-
-            HashSet<Gamemode> gamemodes = [];
-            if (attributes is not null)
+            try
             {
-                foreach (ModdedGamemodeAttribute attribute in attributes)
-                {
-                    if (attribute.gamemode is not null)
-                    {
-                        gamemodes.Add(attribute.gamemode);
-                        continue;
-                    }
-                    gamemodes.UnionWith(ModdedGamemodes);
-                }
-            }
+                IEnumerable<ModdedGamemodeAttribute> attributes = type.GetCustomAttributes<ModdedGamemodeAttribute>();
 
-            return gamemodes;
+                HashSet<Gamemode> gamemodes = [];
+                if (attributes is not null)
+                {
+                    foreach (ModdedGamemodeAttribute attribute in attributes)
+                    {
+                        if (attribute.gamemode is not null)
+                        {
+                            gamemodes.Add(attribute.gamemode);
+                            continue;
+                        }
+                        gamemodes.UnionWith(ModdedGamemodes);
+                    }
+                }
+
+                return gamemodes;
+            } catch (Exception ex)
+            {
+                Debug.Log($"[Utilla::Err]: {ex.Message} {ex.StackTrace}");
+                return [ ];
+            }
         }
 
         void AddGamemodeToPrefabPool(Gamemode gamemode)
