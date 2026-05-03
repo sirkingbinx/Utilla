@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using UnityEngine.UIElements;
 using Utilla.Behaviours;
 using Utilla.Models;
 
@@ -13,14 +14,13 @@ namespace Utilla.Utils
 
         public static Gamemode FindGamemodeInString(string gmString)
         {
-            if (gmString.Contains(';'))
-            {
-                string[] split = gmString.Split(';');
-                bool useSeperator = split.Length > 2;
-                return useSeperator ? GetGamemode(gamemode => split[^1] == gamemode.ID) : null;
-            }
+            // 0-based index 2 is gamemode name
+            string[] gmParts = gmString.Split(";");
 
-            return GetGamemode(gamemode => gmString.EndsWith(gamemode.ID));
+            if (gmParts.Length < 3)
+                return GetGamemode(gamemode => gmString.Contains(gamemode.ID));
+
+            return GetGamemode(gamemode => gmParts[2].Contains(gamemode.ID));
         }
 
         public static Gamemode GetGamemodeFromId(string id) => GetGamemode(gamemode => gamemode.ID == id);

@@ -7,13 +7,11 @@ namespace Utilla
 {
     public class PluginInfo
     {
-        // Hi - ghosty
         public const string Name = "Utilla";
-        public const string GUID = "org.legoandmars.gorillatag.utilla"; // this used to be com.*, my bad
-        public const string Version = "1.6.29";
+        public const string GUID = "org.legoandmars.gorillatag.utilla";
+        public const string Version = "1.7.0";
 
         public const string VersionURL = "https://github.com/sirkingbinx/Utilla/blob/master/Version.txt?raw=true";
-        public const string InfoURL = "https://raw.githubusercontent.com/developer9998/Utilla-Info/main";
 
         public BaseUnityPlugin Plugin { get; set; }
         public Gamemode[] Gamemodes { get; set; }
