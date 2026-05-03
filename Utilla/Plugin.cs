@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
-using HarmonyLib;
 using System;
 using UnityEngine;
 using Utilla.Behaviours;
@@ -18,7 +17,7 @@ namespace Utilla
 
             DontDestroyOnLoad(this);
 
-            Harmony.CreateAndPatchAll(typeof(Plugin).Assembly, PluginInfo.GUID);
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(Plugin).Assembly, PluginInfo.GUID);
             Events.GameInitialized += OnGameInitialized;
         }
 
