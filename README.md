@@ -1,4 +1,4 @@
-# Utilla
+# Utilla [![Install with MonkeModManager](https://img.shields.io/badge/install_with-MonkeModManager-blue)](https://sirkingbinx.dev/mmm_install?mods=Utilla~https%3A%2F%2Fgithub.com%2Fsirkingbinx%2FUtillas%2Freleases%2Flatest%2Fdownload%2FUtilla%2Edll)
 
 A PC library for Gorilla Tag that handles various room-related things (and more?)
 
