@@ -16,9 +16,7 @@ namespace Utilla.Tools
 
         public static void Log(object data, LogLevel level = LogLevel.Info)
         {
-#if DEBUG
             Plugin.Logger?.Log(level, data);
-#endif
         }
     }
 }
