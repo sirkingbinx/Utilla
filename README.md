@@ -7,7 +7,7 @@ This is a (deattached) fork of [developer9998/Utilla](https://github.com/develop
 ## Installation
 
 ### Automatic installation
-If you don't want to manually install, you can install this mod with the [Monke Mod Manager](https://github.com/sirkingbinx/MonkeModManager/releases/latest)
+If you don't want to manually install, you can install this mod with the [Monke Mod Manager](https://github.com/ngbatzyt/MonkeModManager/releases/latest)
 ### Manual Installation
 
 If your game isn't modded with BepinEx, DO THAT FIRST! Simply go to the [latest BepinEx release](https://github.com/BepInEx/BepInEx/releases) and extract BepinEx_x64_VERSION.zip directly into your game's folder, then run the game once to install BepinEx properly.
