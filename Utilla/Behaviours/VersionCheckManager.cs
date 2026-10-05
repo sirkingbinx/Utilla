@@ -33,7 +33,7 @@ internal class VersionCheckManager : MonoBehaviour
         footerText.text = $"{PluginInfo.Name} {PluginInfo.Version}".ToUpper();
         footerText.enableAutoSizing = false;
         footerText.fontSize = 45;
-        footerText.margin = new Vector4(0f, 110f, 0f, 0f);
+        footerText.margin = new Vector4(0f, 80f, 0f, 0f);
         footerText.characterSpacing = -11.5f;
         footerText.enabled = true;
         footerText.renderer.enabled = true;

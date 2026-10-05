@@ -9,7 +9,7 @@ namespace Utilla
     {
         public const string Name = "Utilla";
         public const string GUID = "org.legoandmars.gorillatag.utilla";
-        public const string Version = "1.7.0";
+        public const string Version = "1.7.2";
 
         public const string VersionURL = "https://github.com/sirkingbinx/Utilla/blob/master/Version.txt?raw=true";
 
