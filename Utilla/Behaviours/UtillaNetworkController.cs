@@ -1,4 +1,4 @@
-﻿using ExitGames.Client.Photon;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -24,22 +24,33 @@ namespace Utilla.Behaviours
             base.OnEnable(); // Tell Photon to register this object as a callback target, this will be important shortly
 
             if (NetworkSystem.Instance is NetworkSystem netSys && netSys is NetworkSystemPUN && PhotonNetwork.NetworkingClient is LoadBalancingClient client)
-            {
-                // The following code inserts our callbacks right before the network system does
-                // This ensures any relative members a part of Utilla are properly defined before anything else gets their values
 
+                // PICO WAS HERE
+
+            {
                 client.UpdateCallbackTargets();
                 MatchMakingCallbacksContainer callbackContainer = client.MatchMakingCallbackTargets;
 
+                int networkSystemIndex = -1;
                 for (int i = 0; i < callbackContainer.Count; i++)
                 {
                     IMatchmakingCallbacks individualCallback = callbackContainer[i];
                     if ((object)individualCallback is MonoBehaviour behaviour && behaviour.gameObject == netSys.gameObject)
                     {
-                        if (callbackContainer.Contains(this)) callbackContainer.Remove(this);
-                        callbackContainer.Insert(i, this);
+                        networkSystemIndex = i;
                         break;
                     }
+                }
+
+                if (networkSystemIndex >= 0)
+                {
+                    int currentIndex = callbackContainer.IndexOf(this);
+                    if (currentIndex >= 0)
+                    {
+                        callbackContainer.Remove(this);
+                        if (currentIndex < networkSystemIndex) networkSystemIndex--;
+                    }
+                    callbackContainer.Insert(networkSystemIndex + 1, this);
                 }
             }
         }
@@ -68,9 +79,9 @@ namespace Utilla.Behaviours
                 isPrivate = isPrivate,
                 Gamemode = gameMode
             };
-            Events.Instance.TriggerRoomJoin(args);
-
             lastRoom = args;
+
+            Events.Instance.TriggerRoomJoin(args);
 
             //RoomUtils.ResetQueue();
         }
@@ -90,18 +101,31 @@ namespace Utilla.Behaviours
 
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
         {
-            if (ApplicationQuittingState.IsQuitting || !NetworkSystem.Instance.InRoom || NetworkSystem.Instance.GameModeString is not string gameMode || gameMode == null) return;
+            if (ApplicationQuittingState.IsQuitting || NetworkSystem.Instance == null || !NetworkSystem.Instance.InRoom || NetworkSystem.Instance.GameModeString is not string gameMode || gameMode == null) return;
 
             GameModeUtils.CurrentGamemode = GameModeUtils.FindGamemodeInString(gameMode);
 
+            if (lastRoom == null)
+            {
+                lastRoom = new Events.RoomJoinedArgs
+                {
+                    isPrivate = NetworkSystem.Instance.SessionIsPrivate,
+                    Gamemode = gameMode
+                };
+                Events.Instance.TriggerRoomJoin(lastRoom);
+                return;
+            }
+
             if (lastRoom.Gamemode != gameMode || lastRoom.isPrivate != NetworkSystem.Instance.SessionIsPrivate)
             {
-                GamemodeManager.Instance.OnRoomLeft(null, lastRoom);
+                if (GamemodeManager.HasInstance)
+                    GamemodeManager.Instance.OnRoomLeft(null, lastRoom);
 
                 lastRoom.Gamemode = gameMode;
                 lastRoom.isPrivate = NetworkSystem.Instance.SessionIsPrivate;
 
-                GamemodeManager.Instance.OnRoomJoin(null, lastRoom);
+                if (GamemodeManager.HasInstance)
+                    GamemodeManager.Instance.OnRoomJoin(null, lastRoom);
             }
         }
     }
