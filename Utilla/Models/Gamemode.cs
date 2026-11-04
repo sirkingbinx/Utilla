@@ -58,6 +58,8 @@ namespace Utilla.Models
         /// </summary>
         public Type GameManager { get; }
 
+        public string GameModeName => BaseGamemode.HasValue ? BaseGamemode.ToString() : ID;
+
         internal Gamemode(GameModeType gameModeType)
         {
             BaseGamemode = gameModeType;
@@ -72,7 +74,7 @@ namespace Utilla.Models
         {
             BaseGamemode = game_mode_type;
 
-            ID = game_mode_type.HasValue && !id.Contains(game_mode_type.Value.ToString()) ? string.Concat(game_mode_type, id) : id;
+            ID = game_mode_type.HasValue && !id.Contains(game_mode_type.Value.ToString()) ? string.Concat(id, game_mode_type) : id;
             DisplayName = displayName;
 
             Logging.Message($"Constructed custom gamemode: {id} based on {(game_mode_type.HasValue ? game_mode_type.Value : "no")} type");

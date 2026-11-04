@@ -14,13 +14,13 @@ namespace Utilla.Utils
 
         public static Gamemode FindGamemodeInString(string gmString)
         {
-            // 0-based index 2 is gamemode name
-            string[] gmParts = gmString.Split(";");
+            if (GameModeString.FromString(gmString) is GameModeString gmStringInstance)
+            {
+                string gameId = gmStringInstance.gameType;
+                return GetGamemode(gamemode => gamemode.ID == gameId);
+            }
 
-            if (gmParts.Length < 3)
-                return GetGamemode(gamemode => gmString.Contains(gamemode.ID));
-
-            return GetGamemode(gamemode => gmParts[2].Contains(gamemode.ID));
+            return GetGamemode(gamemode => gmString.EndsWith(gamemode.ID));
         }
 
         public static Gamemode GetGamemodeFromId(string id) => GetGamemode(gamemode => gamemode.ID == id);

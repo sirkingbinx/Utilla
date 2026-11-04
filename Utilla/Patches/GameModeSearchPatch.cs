@@ -17,7 +17,7 @@ internal class GameModeSearchPatch
             return false;
         }
 
-        Logging.Error("NOT GOOD");
+        Logging.Error($"Gamemode could not be found in string: {gmString}");
         return true;
     }
 }

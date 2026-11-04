@@ -1,5 +1,11 @@
-# Utilla
+## **NOTICE!**
+Version 1.7.3 is the last version of Utilla we will officially support. From now on, build mods and gamemodes for [GorillaLibrary](https://github.com/GorillaTagModdingHub/GorillaLibrary). If you have a legacy mod that relies on Utilla and cannot be migrated, you may leave Utilla installed as GorillaLibrary will manage translating gamemode logic.
 
+GorillaLibrary is avaliable from the following:
+- MonkeForge (recommended): https://monkeforge.org/view/gorillalibrary
+- GitHub: https://github.com/GorillaTagModdingHub/GorillaLibrary/releases/latest
+
+# Utilla
 A PC library for Gorilla Tag that handles various room-related things (and more?)
 
 This is a (deattached) fork of [developer9998/Utilla](https://github.com/developer9998/Utilla), which is a fork of [legoandmars/Utilla](https://github.com/legoandmars/Utilla). Credits go to [everyone who contributed to the Utilla recycling center](https://github.com/sirkingbinx/Utilla/graphs/contributors) before me.
